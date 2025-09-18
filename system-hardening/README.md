@@ -9,6 +9,8 @@ The goal is to make the system more resilient against unauthorized access, malwa
 
 ## 1.1 Disable Root Login over SSH
 
+![Disable Root Login over SSH](/_images/disable_root_login_ssh.png)
+
 Direct root login over SSH is a common attack vector. Disabling it improves security by enforcing the principle of least privilege and making unauthorized access harder.
 
 ### 1.1.1 Create a non-root admin user
@@ -43,6 +45,8 @@ sudo systemctl restart ssh
 - Reduces the attack surface for brute-force or password-guessing attempts.
 
 ## 1.2 Enforce SSH Key Authentication + Fail2Ban
+
+![Fail2Ban](/_images/fail2ban.jpg)
 
 SSH key-based authentication is a secure alternative to passwords. Combined with Fail2Ban, it protects the server against brute-force attacks.
 
@@ -131,6 +135,8 @@ Status for the jail: sshd
 - Together, they **greatly reduce the risk of unauthorized access** and protect the server from brute-force attacks.
 
 ## 1.3 Configure Firewall (UFW / iptables)
+
+![Ubuntu UFW](/_images/ubuntu_ufw.png)
 
 A firewall is a critical layer of defense that controls which network traffic is allowed to reach the system.  
 By default, all unnecessary connections should be denied, and only essential services explicitly permitted. 
