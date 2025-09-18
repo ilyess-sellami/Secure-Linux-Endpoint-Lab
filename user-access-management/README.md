@@ -58,6 +58,8 @@ root
 
 ## 2.2 Enforce Password Policies (PAM)
 
+![Password Security](images/password_security.webp)
+
 To strengthen authentication security, we use **PAM (Pluggable Authentication Modules)** to enforce **strong password policies**.
 This ensures that user passwords are not weak, reused, or easily guessable, making brute-force and credential-stuffing attacks less effective.
 
