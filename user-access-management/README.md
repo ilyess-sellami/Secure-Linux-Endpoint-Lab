@@ -7,6 +7,8 @@ It ensures that only authorized users are granted access, with the principle of 
 
 The goal is to prevent unauthorized access, limit potential damage from compromised accounts, and maintain accountability for every action performed on the system.
 
+---
+
 ## 2.1 Create Admin User with Sudo Privileges
 
 ![Admin User with Sudo Privileges](images/admin_sudo.webp)
@@ -52,6 +54,7 @@ root
 - **Enforces least privilege**, as normal tasks can be run without root.
 - **Improves security monitoring** by logging all privileged actions through `sudo`.
 
+---
 
 ## 2.2 Enforce Password Policies (PAM)
 
@@ -128,6 +131,7 @@ passwd adminuser
 - **Stops password reuse**, limiting impact of leaked credentials.
 - **Adds multiple layers of complexity** (uppercase, digits, symbols) making brute-force attacks far less effective.
 
+---
 
 ## 2.3 Implement Least Privilege Access (RBAC)
 
