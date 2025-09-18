@@ -5,12 +5,14 @@
 ---
 
 ## 📌 Overview
+
 The **Secure Linux Endpoint Lab** is a hands-on project that demonstrates how to **harden and monitor a Linux system** using **open-source tools**.  
 It highlights skills in **system administration** and **SOC engineering** by focusing on endpoint protection, log analysis, and attack detection.  
 
 ---
 
 ## 🎯 Objectives
+
 - Configure and harden a Linux VM (Ubuntu/Debian)  
 - Implement **endpoint security tools** (Auditd, Fail2Ban, ClamAV, AIDE, Suricata, Wazuh agent)  
 - Simulate attacks (brute force, malware, unauthorized file changes)  
@@ -19,6 +21,7 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 ---
 
 ## 🏗️ Lab Setup
+
 - **Virtualization**: VirtualBox / VMware / Proxmox  
 - **OS**: Ubuntu Server 22.04 LTS (recommended)  
 - **Network**: NAT or Bridged for connectivity  
@@ -35,6 +38,7 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 ## 🔐 Security Hardening Steps
 
 ### 1. System Hardening
+
 See details in [system-hardening/README.md](/system-hardening/README.md)  
 Includes:
 - Disable root login over SSH  
@@ -44,6 +48,7 @@ Includes:
 - Remove unnecessary services and packages  
 
 ### 2. User & Access Management
+
 See details in [user-access-management/README.md](/user-access-management/README.md)  
 Includes:
 - Create admin user with sudo privileges  
@@ -51,6 +56,7 @@ Includes:
 - Implement least privilege access (RBAC)  
 
 ### 3. Endpoint Protection Tools
+
 See details in [endpoint-protection/README.md](/endpoint-protection/README.md)  
 Includes:
 - **Audit & Monitoring:**  
@@ -63,12 +69,14 @@ Includes:
     - Wazuh agent (or OSSEC agent) installed on VM  
 
 ### 4. File & System Integrity
+
 See details in [file-system-integrity/README.md](/file-system-integrity/README.md)  
 Includes:
 - AIDE (Advanced Intrusion Detection Environment)  
 - Tripwire (optional alternative)  
 
 ### 5. Network Security
+
 See details in [network-security/README.md](/network-security/README.md)  
 Includes:
 - IDS with Suricata (local rules for endpoint traffic monitoring)  
