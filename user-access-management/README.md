@@ -9,6 +9,8 @@ The goal is to prevent unauthorized access, limit potential damage from compromi
 
 ## 2.1 Create Admin User with Sudo Privileges
 
+![Admin User with Sudo Privileges](images/admin_sudo.webp)
+
 Instead of using the `root` account directly (which is risky), we create a dedicated **admin user** with **sudo privileges**.
 
 This ensures all administrative actions are logged, and root access is only obtained when explicitly required.
