@@ -480,3 +480,71 @@ Try weak passwords and confirm they’re rejected.
 - **Forces password rotation** to reduce risk of compromised accounts.
 - **Stops password reuse**, limiting impact of leaked credentials.
 - **Adds multiple layers of complexity** (uppercase, digits, symbols) making brute-force attacks far less effective.
+
+### 2.3 Implement Least Privilege Access (RBAC)
+
+**Role-Based Access Control (RBAC)** ensures that users have **only the permissions necessary** to perform their job.
+
+This limits the potential damage from compromised accounts and reduces the risk of accidental or malicious changes.
+
+**2.3.1 Create Groups for Roles**
+
+For example, define groups for different access levels:
+```bash
+sudo groupadd dev       # Developers
+sudo groupadd ops       # Operations
+sudo groupadd auditors  # Read-only auditing
+```
+
+**2.3.2 Assign Users to Groups**
+
+```bash
+sudo usermod -aG dev alice
+sudo usermod -aG ops bob
+sudo usermod -aG auditors charlie
+```
+- Use `-aG` to append users to groups without removing existing group memberships.
+
+**2.3.3 Set Permissions Based on Groups**
+
+Limit file or directory access using `chown` and `chmod`:
+```bash
+# Make /srv/dev only accessible to dev group
+sudo chown root:dev /srv/dev
+sudo chmod 770 /srv/dev
+
+# Make /srv/audit read-only for auditors
+sudo chown root:auditors /srv/audit
+sudo chmod 750 /srv/audit
+```
+
+**2.3.4 Restrict Sudo Privileges**
+
+Edit the sudoers file safely:
+```bash
+sudo visudo
+```
+
+Example rules:
+```bash
+# Only ops group can restart services
+%ops ALL=(ALL) NOPASSWD: /bin/systemctl restart *
+
+# Dev group can only deploy scripts in /srv/dev
+%dev ALL=(ALL) NOPASSWD: /usr/bin/bash /srv/dev/deploy.sh
+```
+
+**2.3.5 Verify Access**
+
+```bash
+# Switch to a user and test
+su - charlie
+ls /srv/dev          # Should be denied
+```
+
+**✅ Why this is important:
+
+- **Reduces risk** by limiting what each user can do.
+- **Prevents accidental damage** from users with unnecessary privileges.
+- **Protects sensitive data** by isolating access to only relevant files/services.
+- **Improves auditing and accountability**, making it clear who did what.
