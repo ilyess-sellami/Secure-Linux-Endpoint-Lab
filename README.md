@@ -74,8 +74,6 @@ This includes disabling risky defaults, configuring firewalls, enforcing secure 
 
 The goal is to make the system more resilient against unauthorized access, malware, and potential breaches while ensuring proper monitoring and accountability.
 
---
-
 ### 1.1 Disable Root Login over SSH
 
 Direct root login over SSH is a common attack vector. Disabling it improves security by enforcing the principle of least privilege and making unauthorized access harder.
