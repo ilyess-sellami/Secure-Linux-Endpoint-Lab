@@ -31,7 +31,7 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 ## 🔐 Security Hardening Steps
 
 ### 1. System Hardening
-See details in [system-hardening/README.md](system-hardening/README.md)  
+See details in [system-hardening/README.md](/system-hardening/README.md)  
 Includes:
 - Disable root login over SSH  
 - Enforce SSH key authentication + Fail2Ban  
@@ -40,14 +40,14 @@ Includes:
 - Remove unnecessary services and packages  
 
 ### 2. User & Access Management
-See details in [user-access-management/README.md](user-access-management/README.md)  
+See details in [user-access-management/README.md](/user-access-management/README.md)  
 Includes:
 - Create admin user with sudo privileges  
 - Enforce password policies (PAM)  
 - Implement least privilege access (RBAC)  
 
 ### 3. Endpoint Protection Tools
-See details in [endpoint-protection/README.md](endpoint-protection/README.md)  
+See details in [endpoint-protection/README.md](/endpoint-protection/README.md)  
 Includes:
 - **Audit & Monitoring:**  
     - Auditd (system activity logging)  
@@ -59,13 +59,13 @@ Includes:
     - Wazuh agent (or OSSEC agent) installed on VM  
 
 ### 4. File & System Integrity
-See details in [file-system-integrity/README.md](file-system-integrity/README.md)  
+See details in [file-system-integrity/README.md](/file-system-integrity/README.md)  
 Includes:
 - AIDE (Advanced Intrusion Detection Environment)  
 - Tripwire (optional alternative)  
 
 ### 5. Network Security
-See details in [network-security/README.md](network-security/README.md)  
+See details in [network-security/README.md](/network-security/README.md)  
 Includes:
 - IDS with Suricata (local rules for endpoint traffic monitoring)  
 - Port scan detection (psad)
