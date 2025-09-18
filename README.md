@@ -542,7 +542,7 @@ su - charlie
 ls /srv/dev          # Should be denied
 ```
 
-**✅ Why this is important:
+**✅ Why this is important:**
 
 - **Reduces risk** by limiting what each user can do.
 - **Prevents accidental damage** from users with unnecessary privileges.
