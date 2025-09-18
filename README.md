@@ -69,7 +69,7 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 
 ## 1. System Hardening
 
-System hardening is the process of securing a Linux endpoint by reducing its attack surface, enforcing strong access controls, and applying security best practices.  
+**System Hardening** is the **process of securing a Linux endpoint** by reducing its attack surface, enforcing strong access controls, and applying security best practices.  
 This includes disabling risky defaults, configuring firewalls, enforcing secure authentication, removing unnecessary services, and keeping the system up to date with patches.  
 
 The goal is to make the system more resilient against unauthorized access, malware, and potential breaches while ensuring proper monitoring and accountability.
