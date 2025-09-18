@@ -47,8 +47,8 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 **3. Endpoint Protection Tools**
 
 - Audit & Monitoring:
-- Auditd (system activity logging)
-- Syslog centralized logging
+    - Auditd (system activity logging)
+    - Syslog centralized logging
 - Malware & Threat Detection:
     - ClamAV (antivirus)
     - Rkhunter (rootkit detection)
