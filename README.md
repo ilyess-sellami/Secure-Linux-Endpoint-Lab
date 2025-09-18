@@ -28,56 +28,42 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 
 ---
 
-## 🔐 Hardening Checklist
-1. Disable root SSH login  
-2. Enforce SSH key-based authentication  
-3. Configure UFW firewall rules  
-4. Remove unused packages/services  
-5. Apply automatic updates  
-6. Create non-root admin user with sudo  
+## 🔐 Security Hardening Steps
 
-➡️ Detailed steps: [docs/hardening.md](docs/hardening.md)  
+**1. System Hardening**
 
----
+- Disable root login over SSH
+- Enforce SSH key authentication + Fail2Ban
+- Configure firewall (UFW/iptables)
+- Apply automatic updates & patches
+- Remove unnecessary services and packages
 
-## ⚔️ Attack Scenarios
-Simulated attacks to validate the endpoint’s security:  
+**2. User & Access Management**
 
-- **SSH Brute Force** → Detected & blocked by Fail2Ban + Auditd logs  
-- **Malware Test File (EICAR)** → Detected by ClamAV  
-- **Unauthorized File Change** → Detected by AIDE  
-- **Network Scan** → Detected by Suricata  
+- Create admin user with sudo privileges
+- Enforce password policies (PAM)
+- Implement least privilege access (RBAC)
 
-➡️ Full details: [docs/attack-scenarios.md](docs/attack-scenarios.md)  
+**3. Endpoint Protection Tools**
 
----
+- Audit & Monitoring:
+- Auditd (system activity logging)
+- Syslog centralized logging
+- Malware & Threat Detection:
+    - ClamAV (antivirus)
+    - Rkhunter (rootkit detection)
+- Intrusion Detection:
+    - Wazuh agent (or OSSEC agent) installed on VM
 
-## 📊 SOC Monitoring
-The endpoint integrates with **Wazuh** (or ELK) for centralized monitoring:  
-- Collect system logs  
-- Correlate IDS/IPS alerts  
-- Generate security events dashboards  
+**4. File & System Integrity**
 
-➡️ Setup guide: [docs/monitoring.md](docs/monitoring.md)  
+- AIDE (Advanced Intrusion Detection Environment) for file integrity monitoring
+- Tripwire (optional alternative)
 
----
+**5. Network Security**
 
-## 📸 Screenshots
-Proof of hardening & detections available in: [screenshots/](screenshots/)  
-
-Examples:  
-- Fail2Ban blocking SSH brute force  
-- ClamAV catching EICAR test file  
-- AIDE integrity alert  
+- IDS with Suricata (local rules for endpoint traffic monitoring)
+- Port scan detection (psad)
 
 ---
-
-## 🚀 Outcomes
-By completing this project, you will:  
-- Show expertise in **Linux system administration & security hardening**  
-- Demonstrate **endpoint monitoring & SOC detection** skills  
-- Build a **portfolio-ready cybersecurity project**  
-
----
-
-## 📂 Repository Structure
+  
