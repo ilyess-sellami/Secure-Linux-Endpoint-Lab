@@ -66,4 +66,42 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 - Port scan detection (psad)
 
 ---
+
+## 1. System Hardening
+
+System hardening is the process of securing a Linux endpoint by reducing its attack surface, enforcing strong access controls, and applying security best practices.  
+This includes disabling risky defaults, configuring firewalls, enforcing secure authentication, removing unnecessary services, and keeping the system up to date with patches.  
+
+The goal is to make the system more resilient against unauthorized access, malware, and potential breaches while ensuring proper monitoring and accountability.
+
+### 1.1 Disable Root Login over SSH
+
+Direct root login over SSH is a common attack vector. Disabling it improves security by enforcing the principle of least privilege and making unauthorized access harder.
+
+**1.1.1 Create a non-root admin user**
+
+```bash
+sudo adduser adminuser
+sudo usermod -aG sudo adminuser
+```
+
+**1.1.2 Edit SSH configuration**
+
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+Set the following:
+
+```nginx
+PermitRootLogin no
+```
+
+**1.1.3 Restart SSH service**
+
+```bash
+sudo systemctl restart ssh
+```
+
+
   
