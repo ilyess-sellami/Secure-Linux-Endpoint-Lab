@@ -87,6 +87,7 @@ sudo usermod -aG sudo adminuser
 
 **1.1.2 Edit SSH configuration**
 
+- Edit the ssh configuration file:
 ```bash
 sudo nano /etc/ssh/sshd_config
 ```
@@ -123,4 +124,26 @@ ssh-copy-id adminuser@<VM_IP>
 - Replaces `<VM_IP>` with your server’s IP.
 - This appends your public key to `/home/adminuser/.ssh/authorized_keys`.
 
-  
+**1.2.3 Verify SSH Key Login**
+
+```bash
+ssh adminuser@<VM_IP>
+```
+- You should **log in without entering a password**.
+
+**1.2.4 Disable Password Authentication (Optional)**
+
+- Edit the ssh configuration file:
+```bash
+sudo nano /etc/ssh/sshd_config
+```
+
+- Set the following:
+```nginx
+PasswordAuthentication no
+```
+
+- Restart the ssh service:
+```bash
+sudo systemctl restart ssh
+```
