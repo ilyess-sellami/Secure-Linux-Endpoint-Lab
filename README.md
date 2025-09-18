@@ -30,40 +30,45 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 
 ## 🔐 Security Hardening Steps
 
-**1. System Hardening**
+### 1. System Hardening
+See details in [system-hardening/README.md](system-hardening/README.md)  
+Includes:
+- Disable root login over SSH  
+- Enforce SSH key authentication + Fail2Ban  
+- Configure firewall (UFW/iptables)  
+- Apply automatic updates & patches  
+- Remove unnecessary services and packages  
 
-- Disable root login over SSH
-- Enforce SSH key authentication + Fail2Ban
-- Configure firewall (UFW/iptables)
-- Apply automatic updates & patches
-- Remove unnecessary services and packages
+### 2. User & Access Management
+See details in [user-access-management/README.md](user-access-management/README.md)  
+Includes:
+- Create admin user with sudo privileges  
+- Enforce password policies (PAM)  
+- Implement least privilege access (RBAC)  
 
-**2. User & Access Management**
+### 3. Endpoint Protection Tools
+See details in [endpoint-protection/README.md](endpoint-protection/README.md)  
+Includes:
+- **Audit & Monitoring:**  
+    - Auditd (system activity logging)  
+    - Syslog centralized logging  
+- **Malware & Threat Detection:**  
+    - ClamAV (antivirus)  
+    - Rkhunter (rootkit detection)  
+- **Intrusion Detection:**  
+    - Wazuh agent (or OSSEC agent) installed on VM  
 
-- Create admin user with sudo privileges
-- Enforce password policies (PAM)
-- Implement least privilege access (RBAC)
+### 4. File & System Integrity
+See details in [file-system-integrity/README.md](file-system-integrity/README.md)  
+Includes:
+- AIDE (Advanced Intrusion Detection Environment)  
+- Tripwire (optional alternative)  
 
-**3. Endpoint Protection Tools**
-
-- Audit & Monitoring:
-    - Auditd (system activity logging)
-    - Syslog centralized logging
-- Malware & Threat Detection:
-    - ClamAV (antivirus)
-    - Rkhunter (rootkit detection)
-- Intrusion Detection:
-    - Wazuh agent (or OSSEC agent) installed on VM
-
-**4. File & System Integrity**
-
-- AIDE (Advanced Intrusion Detection Environment) for file integrity monitoring
-- Tripwire (optional alternative)
-
-**5. Network Security**
-
-- IDS with Suricata (local rules for endpoint traffic monitoring)
-- Port scan detection (psad)
+### 5. Network Security
+See details in [network-security/README.md](network-security/README.md)  
+Includes:
+- IDS with Suricata (local rules for endpoint traffic monitoring)  
+- Port scan detection (psad)  
 
 ---
 
