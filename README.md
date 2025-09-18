@@ -87,7 +87,7 @@ sudo usermod -aG sudo adminuser
 
 **1.1.2 Edit SSH configuration**
 
-- Edit the ssh configuration file:
+Edit the ssh configuration file:
 ```bash
 sudo nano /etc/ssh/sshd_config
 ```
@@ -139,17 +139,17 @@ ssh adminuser@<VM_IP>
 
 **1.2.4 Disable Password Authentication (Optional)**
 
-- Edit the ssh configuration file:
+Edit the ssh configuration file:
 ```bash
 sudo nano /etc/ssh/sshd_config
 ```
 
-- Set the following:
+Set the following:
 ```nginx
 PasswordAuthentication no
 ```
 
-- Restart the ssh service:
+Restart the ssh service:
 ```bash
 sudo systemctl restart ssh
 ```
