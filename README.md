@@ -104,6 +104,12 @@ PermitRootLogin no
 sudo systemctl restart ssh
 ```
 
+**✅ Why this is important:**
+
+- Prevents attackers from targeting the root account directly.
+- Forces use of individual user accounts, improving **accountability and audit logging**.
+- Reduces the attack surface for brute-force or password-guessing attempts.
+
 ### 1.2 Enforce SSH Key Authentication + Fail2Ban
 
 SSH key-based authentication is a secure alternative to passwords. Combined with Fail2Ban, it protects the server against brute-force attacks.
@@ -147,3 +153,33 @@ PasswordAuthentication no
 ```bash
 sudo systemctl restart ssh
 ```
+
+**1.2.5 Install and Configure Fail2Ban**
+
+```bash
+sudo apt update && sudo apt install fail2ban -y
+sudo nano /etc/fail2ban/jail.local
+```
+
+- Example configuration for SSH:
+```ini
+[sshd]
+enabled = true
+port    = ssh
+filter  = sshd
+logpath = /var/log/auth.log
+maxretry = 3
+bantime = 1h
+```
+
+```bash
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+sudo fail2ban-client status sshd
+```
+
+**✅ Why this is important:**
+
+- **SSH keys** are much harder to brute-force than passwords.
+- **Fail2Ban** automatically blocks IPs after repeated failed login attempts.
+- Together, they **greatly reduce the risk of unauthorized access** and protect the server from brute-force attacks.
