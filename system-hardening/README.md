@@ -1,5 +1,7 @@
 # 1. System Hardening
 
+![System Hardening](/_images/system_hardening.jpg)
+
 **System Hardening** is the **process of securing a Linux endpoint** by reducing its attack surface, enforcing strong access controls, and applying security best practices.  
 This includes disabling risky defaults, configuring firewalls, enforcing secure authentication, removing unnecessary services, and keeping the system up to date with patches.  
 
