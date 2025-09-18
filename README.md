@@ -566,34 +566,34 @@ This phase focuses on **Auditd** for detailed system auditing and **Syslog** for
 
 **Auditd** is the Linux Audit Daemon, responsible for tracking system events such as user logins, file access, and command executions.
 
-**3.1.1.1 Install Auditd**
+**Install Auditd**
 
 ```bash
 sudo apt update
 sudo apt install auditd audispd-plugins -y
 ```
 
-**3.1.1.2 Enable and start the service**
+**Enable and start the service**
 
 ```bash
 sudo systemctl enable auditd
 sudo systemctl start auditd
 ```
 
-**3.1.1.3 Enable and start the service**
+**Enable and start the service**
 
 ```bash
 sudo systemctl enable auditd
 sudo systemctl start auditd
 ```
 
-**3.1.1.4 Verify service status**
+**Verify service status**
 
 ```bash
 sudo systemctl status auditd
 ```
 
-**3.1.1.5 Example: Monitor changes to /etc/passwd**
+**Example: Monitor changes to /etc/passwd**
 
 ```bash
 sudo auditctl -w /etc/passwd -p wa -k passwd_changes
@@ -602,7 +602,7 @@ sudo auditctl -w /etc/passwd -p wa -k passwd_changes
 - `-p wa` → monitor write and attribute changes
 - `-k` → assign a key for easier searching
 
-**3.1.1.6 View audit logs**
+**View audit logs**
 
 ```bash
 sudo ausearch -k passwd_changes
@@ -612,26 +612,26 @@ sudo ausearch -k passwd_changes
 
 **Syslog** collects and stores system logs, which can also be forwarded to a central logging server for monitoring.
 
-**3.1.2.1 Install Syslog**
+**Install Syslog**
 
 ```bash
 sudo apt install rsyslog -y
 ```
 
-**3.1.2.2 Enable and start the service**
+**Enable and start the service**
 
 ```bash
 sudo systemctl enable rsyslog
 sudo systemctl start rsyslog
 ```
 
-**3.1.2.3 Verify service status**
+**Verify service status**
 
 ```bash
 sudo systemctl status rsyslog
 ```
 
-**3.1.2.4 Forward logs to a central server**
+**Forward logs to a central server**
 
 ```bash
 sudo nano /etc/rsyslog.d/50-default.conf
@@ -642,7 +642,7 @@ Add on the top file this:
 *.* @@central-logging-server-ip:514
 ```
 
-**3.1.2.5 Restart rsyslog to apply changes**
+**Restart rsyslog to apply changes**
 
 ```bash
 sudo systemctl restart rsyslog
