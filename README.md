@@ -103,5 +103,24 @@ PermitRootLogin no
 sudo systemctl restart ssh
 ```
 
+### 1.2 Enforce SSH Key Authentication + Fail2Ban
+
+SSH key-based authentication is a secure alternative to passwords. Combined with Fail2Ban, it protects the server against brute-force attacks.
+
+**1.2.1 Generate SSH Key Pair (on local machine)**
+
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+- Accept default location (`~/.ssh/id_ed25519`).
+- Optionally, set a passphrase for added security.
+
+**1.2.2 Copy Public Key to Server**
+
+```bash
+ssh-copy-id adminuser@<VM_IP>
+```
+- Replaces `<VM_IP>` with your server’s IP.
+- This appends your public key to `/home/adminuser/.ssh/authorized_keys`.
 
   
