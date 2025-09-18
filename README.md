@@ -308,3 +308,47 @@ APT::Periodic::Unattended-Upgrade "1";
 - **Minimizes attack window** before an exploit can be used.
 - **Keeps the system compliant** with best security practices.
 
+### 1.5 Remove Unnecessary Services and Packages
+
+Minimizing the number of installed services is one of the most effective hardening practices.
+Every running service is a potential entry point for attackers, so disabling or removing unused software reduces risk.
+
+**1.5.1 List Active Services**
+
+Check what’s running:
+```bash
+sudo systemctl list-unit-files --type=service --state=enabled
+```
+This shows which services start automatically at boot.
+
+**1.5.2 Disable Unnecessary Services**
+
+If you find a service you don’t need (example: `cups` for printing), disable and stop it:
+```bash
+sudo systemctl disable cups
+sudo systemctl stop cups
+```
+
+**1.5.3 Remove Unneeded Packages**
+
+Check installed packages and remove unused ones:
+```bash
+sudo apt list --installed
+sudo apt remove --purge <package-name>
+```
+**1.5.4 Clean Up**
+
+Remove residual config files and unused dependencies:
+```bash
+sudo apt autoremove -y
+sudo apt autoclean -y
+```
+
+**✅ Why this is important:**
+
+- **Reduces attack surface** by eliminating unnecessary software.
+- **Frees system resources** (CPU, RAM, storage).
+- **Prevents vulnerabilities** from unused but exploitable services.
+- **Simplifies monitoring** by keeping only essential services active.
+
+---
