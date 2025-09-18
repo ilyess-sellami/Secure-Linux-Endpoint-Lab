@@ -7,6 +7,8 @@ This includes disabling risky defaults, configuring firewalls, enforcing secure 
 
 The goal is to make the system more resilient against unauthorized access, malware, and potential breaches while ensuring proper monitoring and accountability.
 
+---
+
 ## 1.1 Disable Root Login over SSH
 
 ![Disable Root Login over SSH](images/disable_root_login_ssh.png)
@@ -43,6 +45,8 @@ sudo systemctl restart ssh
 - Prevents attackers from targeting the root account directly.
 - Forces use of individual user accounts, improving **accountability and audit logging**.
 - Reduces the attack surface for brute-force or password-guessing attempts.
+
+---
 
 ## 1.2 Enforce SSH Key Authentication + Fail2Ban
 
@@ -134,6 +138,8 @@ Status for the jail: sshd
 - **Fail2Ban** automatically blocks IPs after repeated failed login attempts.
 - Together, they **greatly reduce the risk of unauthorized access** and protect the server from brute-force attacks.
 
+---
+
 ## 1.3 Configure Firewall (UFW / iptables)
 
 ![Ubuntu UFW](images/ubuntu_ufw.png)
@@ -207,6 +213,8 @@ sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --
 - **Reduces attack surface** by blocking unused and vulnerable ports.  
 - **Mitigates brute-force attempts** with rate limiting on SSH.  
 
+---
+
 ## 1.4 Apply automatic updates & patches
 
 ![Ubuntu Automatic Updates](images/automatic_update_and_patch.png)
@@ -247,6 +255,8 @@ APT::Periodic::Unattended-Upgrade "1";
 - **Reduces human error** — no need to remember manual updates.
 - **Minimizes attack window** before an exploit can be used.
 - **Keeps the system compliant** with best security practices.
+
+---
 
 ## 1.5 Remove Unnecessary Services and Packages
 
