@@ -1,6 +1,6 @@
 # 1. System Hardening
 
-![System Hardening](/_images/system_hardening.jpg)
+![System Hardening](images/system_hardening.jpg)
 
 **System Hardening** is the **process of securing a Linux endpoint** by reducing its attack surface, enforcing strong access controls, and applying security best practices.  
 This includes disabling risky defaults, configuring firewalls, enforcing secure authentication, removing unnecessary services, and keeping the system up to date with patches.  
@@ -9,7 +9,7 @@ The goal is to make the system more resilient against unauthorized access, malwa
 
 ## 1.1 Disable Root Login over SSH
 
-![Disable Root Login over SSH](/_images/disable_root_login_ssh.png)
+![Disable Root Login over SSH](images/disable_root_login_ssh.png)
 
 Direct root login over SSH is a common attack vector. Disabling it improves security by enforcing the principle of least privilege and making unauthorized access harder.
 
@@ -46,7 +46,7 @@ sudo systemctl restart ssh
 
 ## 1.2 Enforce SSH Key Authentication + Fail2Ban
 
-![Fail2Ban](/_images/fail2ban.jpg)
+![Fail2Ban](images/fail2ban.jpg)
 
 SSH key-based authentication is a secure alternative to passwords. Combined with Fail2Ban, it protects the server against brute-force attacks.
 
@@ -136,7 +136,7 @@ Status for the jail: sshd
 
 ## 1.3 Configure Firewall (UFW / iptables)
 
-![Ubuntu UFW](/_images/ubuntu_ufw.png)
+![Ubuntu UFW](images/ubuntu_ufw.png)
 
 A firewall is a critical layer of defense that controls which network traffic is allowed to reach the system.  
 By default, all unnecessary connections should be denied, and only essential services explicitly permitted. 
@@ -209,7 +209,7 @@ sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --
 
 ## 1.4 Apply automatic updates & patches
 
-![Ubuntu Automatic Updates](/_images/automatic_update_and_patch.png)
+![Ubuntu Automatic Updates](images/automatic_update_and_patch.png)
 
 Keeping a server updated is **critical for security**. Most exploits target known vulnerabilities, and unpatched systems are the easiest targets. As a system administrator, enabling automatic updates ensures that security patches are applied quickly without manual intervention.
 

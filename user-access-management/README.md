@@ -1,5 +1,7 @@
 # 2. User & Access Management
 
+![User Access Management](images/user_access_management.jpg)
+
 User and access management is the practice of controlling who can access the system, what they can do, and how their actions are tracked.  
 It ensures that only authorized users are granted access, with the principle of least privilege applied to minimize risk.
 
