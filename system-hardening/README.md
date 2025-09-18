@@ -209,6 +209,8 @@ sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --
 
 ## 1.4 Apply automatic updates & patches
 
+![Ubuntu Automatic Updates](/_images/automatic_update_and_patch.png)
+
 Keeping a server updated is **critical for security**. Most exploits target known vulnerabilities, and unpatched systems are the easiest targets. As a system administrator, enabling automatic updates ensures that security patches are applied quickly without manual intervention.
 
 ### 1.4.1 Install the Unattended-Upgrades package
