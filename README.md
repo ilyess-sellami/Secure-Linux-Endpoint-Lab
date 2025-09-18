@@ -178,8 +178,36 @@ sudo systemctl start fail2ban
 sudo fail2ban-client status sshd
 ```
 
+- You should see like this output:
+
+```bash
+Status for the jail: sshd
+|- Filter
+|  |- Currently failed:	0
+|  |- Total failed:	0
+|  `- Journal matches:	_SYSTEMD_UNIT=sshd.service + _COMM=sshd
+`- Actions
+   |- Currently banned:	0
+   |- Total banned:	0
+   `- Banned IP list:	
+```
+
 **✅ Why this is important:**
 
 - **SSH keys** are much harder to brute-force than passwords.
 - **Fail2Ban** automatically blocks IPs after repeated failed login attempts.
 - Together, they **greatly reduce the risk of unauthorized access** and protect the server from brute-force attacks.
+
+### 1.3 Configure Firewall (UFW / iptables)
+
+A firewall is a critical layer of defense that controls which network traffic is allowed to reach the system.  
+By default, all unnecessary connections should be denied, and only essential services explicitly permitted. 
+
+**1.3.1 Install UFW**
+
+```bash
+sudo apt update
+sudo apt install ufw -y
+```
+
+
