@@ -137,6 +137,8 @@ passwd adminuser
 
 ## 2.3 Implement Least Privilege Access (RBAC)
 
+![RBAC](images/rbac.jpg)
+
 **Role-Based Access Control (RBAC)** ensures that users have **only the permissions necessary** to perform their job.
 
 This limits the potential damage from compromised accounts and reduces the risk of accidental or malicious changes.
