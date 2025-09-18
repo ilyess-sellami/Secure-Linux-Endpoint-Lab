@@ -203,11 +203,108 @@ Status for the jail: sshd
 A firewall is a critical layer of defense that controls which network traffic is allowed to reach the system.  
 By default, all unnecessary connections should be denied, and only essential services explicitly permitted. 
 
-**1.3.1 Install UFW**
+**1.3.1 Install UFW (if not already installed)**
 
 ```bash
 sudo apt update
 sudo apt install ufw -y
 ```
 
+**1.3.2 Set Default Policies**
+
+Deny everything by default, then allow only what’s needed:
+```bash
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+```
+
+**1.3.3 Allow Only Secure Services**
+
+```bash
+sudo ufw allow ssh       # Allow SSH
+sudo ufw allow 80/tcp    # Allow HTTP (if you plan a web server)
+sudo ufw allow 443/tcp   # Allow HTTPS
+```
+
+**1.3.4 Enable the Firewall**
+
+```bash
+sudo ufw enable
+```
+
+Confirm:
+```bash
+sudo ufw status verbose
+```
+
+Expected output:
+```bash
+Status: active
+To                         Action      From
+--                         ------      ----
+22/tcp                     ALLOW       Anywhere
+80/tcp                     ALLOW       Anywhere
+443/tcp                    ALLOW       Anywhere
+```
+
+**1.3.5 Add Rate Limiting (Extra Security)**
+
+To slow down brute force attacks on SSH:
+```bash
+sudo ufw limit ssh/tcp
+```
+
+**1.3.6 (Optional) Iptables Extra Hardening**
+
+If you want advanced control beyond UFW:
+```bash
+sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --set
+sudo iptables -A INPUT -p tcp --dport 22 -m conntrack --ctstate NEW -m recent --update --seconds 60 --hitcount 4 -j DROP
+```
+This blocks IPs with more than 3 SSH attempts in 60 seconds.
+
+**✅ Why this is important:**
+
+- **Restricts access** by only allowing essential services (SSH, HTTP, HTTPS).  
+- **Reduces attack surface** by blocking unused and vulnerable ports.  
+- **Mitigates brute-force attempts** with rate limiting on SSH.  
+
+### 1.4 Apply automatic updates & patches
+
+Keeping a server updated is **critical for security**. Most exploits target known vulnerabilities, and unpatched systems are the easiest targets. As a system administrator, enabling automatic updates ensures that security patches are applied quickly without manual intervention.
+
+**1.4.1 Install the Unattended-Upgrades package**
+
+```bash
+sudo apt update
+sudo apt install unattended-upgrades apt-listchanges -y
+```
+
+**1.4.2 Enable Automatic Updates**
+
+Run the configuration tool:
+```bash
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+```
+- Select **Yes** when asked to automatically download and install stable updates.
+
+**1.4.3 Verify the Configuration**
+
+Check the configuration file:
+```bash
+cat /etc/apt/apt.conf.d/20auto-upgrades
+```
+
+You should see something like:
+```bash
+APT::Periodic::Update-Package-Lists "1";
+APT::Periodic::Unattended-Upgrade "1";
+```
+
+**✅ Why this is important:**
+
+- **Closes known vulnerabilities** quickly by applying patches.
+- **Reduces human error** — no need to remember manual updates.
+- **Minimizes attack window** before an exploit can be used.
+- **Keeps the system compliant** with best security practices.
 
