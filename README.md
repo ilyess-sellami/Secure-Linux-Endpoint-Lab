@@ -352,3 +352,57 @@ sudo apt autoclean -y
 - **Simplifies monitoring** by keeping only essential services active.
 
 ---
+
+## 2. User & Access Management
+
+User and access management is the practice of controlling who can access the system, what they can do, and how their actions are tracked.  
+It ensures that only authorized users are granted access, with the principle of least privilege applied to minimize risk.
+
+This includes creating individual user accounts, enforcing strong password and key-based authentication policies, using groups and roles to manage permissions, and monitoring user activity through logs.  
+
+The goal is to prevent unauthorized access, limit potential damage from compromised accounts, and maintain accountability for every action performed on the system.
+
+### 2.1 Create Admin User with Sudo Privileges
+
+Instead of using the `root` account directly (which is risky), we create a dedicated **admin user** with **sudo privileges**.
+
+This ensures all administrative actions are logged, and root access is only obtained when explicitly required.
+
+**2.1.1 Create a New User**
+
+```bash
+sudo adduser adminuser
+```
+You’ll be prompted to set a password and optional details (name, room number, etc.).
+
+**2.1.2 Add the User to the Sudo Group**
+
+```bash
+sudo usermod -aG sudo adminuser
+```
+
+**2.1.3 Verify Sudo Access**
+
+Switch to the new user:
+```bash
+su - adminuser
+```
+
+Run a sudo command:
+```
+sudo whoami
+```
+
+Expected output:
+```bash
+root
+```
+
+**✅ Why this is important:**
+
+- **Avoids direct root login**, reducing exposure to brute-force attacks.
+- **Provides accountability** since each admin has their own account.
+- **Enforces least privilege**, as normal tasks can be run without root.
+- **Improves security monitoring** by logging all privileged actions through `sudo`.
+
+
