@@ -19,12 +19,12 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 - **OS**: Ubuntu Server 22.04 LTS (recommended)  
 - **Network**: NAT or Bridged for connectivity  
 - **Tools Installed**:  
-  - 🔐 Fail2Ban → SSH brute force protection  
-  - 🔑 Auditd → Activity logging  
-  - 🛡️ ClamAV → Malware detection  
-  - 📂 AIDE → File integrity monitoring  
-  - 🌐 Suricata → Network intrusion detection  
-  - 📊 Wazuh Agent → Log collection & SOC monitoring  
+  - 🔐 **Fail2Ban** → SSH brute force protection  
+  - 🔑 **Auditd** → Activity logging  
+  - 🛡️ **ClamAV** → Malware detection  
+  - 📂 **AIDE** → File integrity monitoring  
+  - 🌐 **Suricata** → Network intrusion detection  
+  - 📊 **Wazuh Agent** → Log collection & SOC monitoring  
 
 ---
 
