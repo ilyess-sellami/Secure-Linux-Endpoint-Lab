@@ -14,6 +14,8 @@ This phase focuses on **Auditd** for detailed system auditing and **Syslog** for
 
 ### 3.1.1 Auditd (System Activity Logging)
 
+![Auditd](images/linux_audit_d.webp)
+
 **Auditd** is the Linux Audit Daemon, responsible for tracking system events such as user logins, file access, and command executions.
 
 **Install Auditd**
