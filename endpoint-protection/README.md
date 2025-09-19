@@ -108,6 +108,8 @@ sudo systemctl restart rsyslog
 - **Syslog** ensures logs are collected centrally, making analysis, alerting, and compliance easier.
 - Together, they provide **real-time monitoring, accountability, and incident response capabilities** for the Linux endpoint.
 
+---
+
 ## 3.2 Malware & Threat Detection
 
 ![Malware & Threat Detection](images/malware_threat_detection.avif)
@@ -214,3 +216,66 @@ sudo chmod +x /etc/cron.daily/rkhunter
 - **Rkhunter** detects rootkits and hidden exploits that could compromise the system.
 - **Daily automated logging** ensures continuous monitoring and provides a historical record for incident analysis.
 - Together, they create **layered protection**, improving endpoint security and SOC visibility
+
+---
+
+## 3.3 Intrusion Detection
+
+Intrusion Detection monitors the Linux endpoint for suspicious activity, unauthorized access, and policy violations.  
+This module uses the **Wazuh agent** (or OSSEC agent) to collect logs, monitor file integrity, and detect intrusions in real time.
+
+
+### 3.3.1 Wazuh Agent Installation
+
+![Wazuh](images/wazuh.jpg)
+
+**Wazuh** is an open-source security monitoring agent that integrates with a Wazuh Manager (SOC server) but can also log locally for lab purposes.
+
+**Add Wazuh repository:**
+```bash
+curl -s https://packages.wazuh.com/key/GPG-KEY-WAZUH | sudo gpg --dearmor -o /usr/share/keyrings/wazuh-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/wazuh-archive-keyring.gpg] https://packages.wazuh.com/4.x/apt/ stable main" | sudo tee /etc/apt/sources.list.d/wazuh.list
+sudo apt update
+```
+
+**Install the agent:**
+```bash
+sudo apt install wazuh-agent -y
+```
+
+#### 3.3.2 Configure the Agent
+
+When installing the Wazuh agent, you need to specify the **Wazuh Manager (server) IP address**. This tells the agent where to send alerts.
+
+**Edit the agent configuration file:**
+```bash
+sudo nano /var/ossec/etc/ossec.conf
+```
+
+**Set the Wazuh server IP address:**
+```xml
+<server>
+  <address>YOUR_WAZUH_SERVER_IP</address>
+</server>
+```
+- Replace `YOUR_WAZUH_SERVER_IP` with the IP of your Wazuh Manager.
+- If you are testing locally and only want **local logging**, you can leave it pointing to `127.0.0.1` or disable remote manager communication.
+
+**Enable and start the agent**
+```bash
+sudo systemctl enable wazuh-agent
+sudo systemctl start wazuh-agent
+```
+
+**Check agent status:**
+```bash
+sudo systemctl status wazuh-agent
+```
+Now, the agent will forward alerts to the Wazuh Manager or log locally depending on your configuration.
+
+**✅ Why this is important:**
+
+- **Wazuh agent** continuously monitors system activity and logs suspicious events.
+- Provides **real-time intrusion detection** and file integrity monitoring.
+- **Local logging** ensures that alerts are preserved even without a central SOC server.
+- Together with **Auditd, Syslog, ClamAV, and Rkhunter**, it forms a comprehensive **endpoint protection layer** for Linux systems.
