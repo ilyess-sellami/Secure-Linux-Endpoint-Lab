@@ -14,7 +14,7 @@ It highlights skills in **system administration** and **SOC engineering** by foc
 ## 🎯 Objectives
 
 - Configure and harden a Linux VM (Ubuntu/Debian)  
-- Implement **endpoint security tools** (Auditd, Fail2Ban, ClamAV, AIDE, Suricata, Wazuh agent)  
+- Implement **endpoint security tools** (Auditd, Fail2Ban, ClamAV, Suricata, Wazuh agent)  
 - Simulate attacks (brute force, malware, unauthorized file changes)  
 - Detect, log, and respond to incidents  
 
@@ -29,7 +29,6 @@ It highlights skills in **system administration** and **SOC engineering** by foc
   - 🔐 **Fail2Ban** → SSH brute force protection  
   - 🔑 **Auditd** → Activity logging  
   - 🛡️ **ClamAV** → Malware detection  
-  - 📂 **AIDE** → File integrity monitoring  
   - 🌐 **Suricata** → Network intrusion detection  
   - 📊 **Wazuh Agent** → Log collection & SOC monitoring  
 
