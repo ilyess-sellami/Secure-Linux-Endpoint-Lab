@@ -68,14 +68,7 @@ Includes:
 - **Intrusion Detection:**  
     - Wazuh agent (or OSSEC agent) installed on VM  
 
-### 4. File & System Integrity
-
-See details in [file-system-integrity/README.md](/file-system-integrity/README.md)  
-Includes:
-- AIDE (Advanced Intrusion Detection Environment)  
-- Tripwire (optional alternative)  
-
-### 5. Network Security
+### 4. Network Security
 
 See details in [network-security/README.md](/network-security/README.md)  
 Includes:
