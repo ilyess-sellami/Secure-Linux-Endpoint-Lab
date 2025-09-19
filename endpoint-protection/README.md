@@ -107,3 +107,110 @@ sudo systemctl restart rsyslog
 - **Auditd** provides detailed tracking of system events, enabling detection of unauthorized access or configuration changes.
 - **Syslog** ensures logs are collected centrally, making analysis, alerting, and compliance easier.
 - Together, they provide **real-time monitoring, accountability, and incident response capabilities** for the Linux endpoint.
+
+## 3.2 Malware & Threat Detection
+
+![Malware & Threat Detection](images/malware_threat_detection.avif)
+
+Malware and threat detection ensures the Linux endpoint is protected from viruses, trojans, and rootkits.  
+
+This phase focuses on **ClamAV** for antivirus scanning and **Rkhunter** for rootkit detection.
+
+### 3.2.1 ClamAV (Antivirus)
+
+![ClamAv](images/clam_av.png)
+
+**ClamAV** is an open-source antivirus engine designed to detect malware, viruses, and other threats on Linux systems.
+
+**Installation:**
+```bash
+sudo apt update
+sudo apt install clamav clamav-daemon -y
+```
+
+**Update virus definitions:**
+```bash
+sudo freshclam
+```
+
+**Recommended Daily Scan Directories:**
+
+- User files: `/home`
+- Temporary files: `/tmp`, `/var/tmp`
+- Web server content: `/var/www` (if hosting websites)
+- Mail directories: `/var/mail`, `/var/spool/mail`
+- Removable media: `/media`, `/mnt`
+
+**Scan a directory:**
+```bash
+clamscan -r /home
+```
+- `-r` → recursively scan directories
+
+**(optional) Scan and remove infected files:**
+```bash
+clamscan -r --remove /home
+```
+
+**Daily Scan Script Example:**
+```bash
+#!/bin/bash
+# Daily ClamAV scan
+SCAN_DIRS="/home /tmp /var/tmp /var/www /var/mail"
+LOG_FILE="/var/log/clamav/daily-scan.log"
+
+# Perform recursive scan and log results
+clamscan -r --quiet --log=$LOG_FILE $SCAN_DIRS
+```
+
+**Enable automatic daily scans:**
+```bash
+sudo nano /etc/cron.daily/clamav-scan
+```
+Add your scan script and make it executable:
+```bash
+sudo chmod +x /etc/cron.daily/clamav-scan
+```
+
+### 3.2.2 Rkhunter (Rootkit Detection)
+
+![Rkhunter](images/rootkit_hunter.png)
+
+**Rkhunter** scans for rootkits, backdoors, and local exploits that may compromise system integrity.
+
+**Installation:**
+```bash
+sudo apt install rkhunter -y
+```
+
+**Update database:**
+```bash
+sudo rkhunter --update
+```
+
+**Run a scan:**
+```bash
+sudo rkhunter --check --report-warnings-only --logfile /var/log/rkhunter/daily.log
+```
+
+**Automate Daily Scans:**
+```bash
+#!/bin/sh
+# /etc/cron.daily/rkhunter
+LOG_FILE="/var/log/rkhunter/daily.log"
+
+/usr/bin/rkhunter --cronjob --update --quiet
+/usr/bin/rkhunter --check --report-warnings-only --logfile $LOG_FILE
+```
+
+Make it executable:
+```bash
+sudo chmod +x /etc/cron.daily/rkhunter
+```
+
+**✅ Why this is important:**
+
+- **ClamAV** scans files and directories for malware, protecting user data and system integrity.
+- **Rkhunter** detects rootkits and hidden exploits that could compromise the system.
+- **Daily automated logging** ensures continuous monitoring and provides a historical record for incident analysis.
+- Together, they create **layered protection**, improving endpoint security and SOC visibility
