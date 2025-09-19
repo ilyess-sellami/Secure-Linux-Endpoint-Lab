@@ -1,10 +1,13 @@
 # 3. Endpoint Protection Tools
 
+![Endpoint Protection](images/endpoint_protection.png)
+
 Endpoint protection ensures that the system is continuously monitored, malware is detected, and potential intrusions are identified.  
 This helps maintain the integrity, availability, and confidentiality of the Linux endpoint.
 
 ## 3.1 Audit & Monitoring
 
+![Audit & Monitoring](images/audit_monitoring.webp)
 
 Audit & Monitoring ensures all system activities are tracked and logged for security analysis, anomaly detection, and compliance.  
 This phase focuses on **Auditd** for detailed system auditing and **Syslog** for centralized log collection.
@@ -56,6 +59,8 @@ sudo ausearch -k passwd_changes
 ```
 
 ### 3.1.2 Syslog (Centralized Logging)
+
+![Syslog](images/syslog.png)
 
 **Syslog** collects and stores system logs, which can also be forwarded to a central logging server for monitoring.
 
