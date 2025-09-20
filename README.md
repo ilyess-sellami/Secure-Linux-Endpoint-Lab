@@ -1,6 +1,6 @@
 # 🖥️ Secure Linux Endpoint Lab
 
-![Linux Security](linux_security.png)
+![Linux Security](Secure-Linux-Endpoint-Lab.png)
 
 ---
 
