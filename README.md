@@ -1,4 +1,8 @@
-# 🖥️ Secure-Linux-Endpoint-Lab - Harden and monitor Linux endpoints
+# Secure Linux Endpoint Lab
+
+**Harden and monitor Linux endpoints 🐧 💻**
+
+---
 
 ![Linux Security](Secure-Linux-Endpoint-Lab.png)
 
