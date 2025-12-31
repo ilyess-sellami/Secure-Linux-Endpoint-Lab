@@ -1,8 +1,5 @@
-# Secure Linux Endpoint Lab
-
+# Secure Linux Endpoint
 **Harden and monitor Linux endpoints 🐧 💻**
-
----
 
 ![Linux Security](Secure-Linux-Endpoint-Lab.png)
 
@@ -10,7 +7,7 @@
 
 ## 📌 Overview
 
-The **Secure Linux Endpoint Lab** is a hands-on project that demonstrates how to **harden and monitor a Linux system** using **open-source tools**.  
+The **Secure Linux Endpoint** is a hands-on project that demonstrates how to **harden and monitor a Linux system** using **open-source tools**.  
 It highlights skills in **system administration** and **SOC engineering** by focusing on endpoint protection, log analysis, and attack detection.  
 
 ---
